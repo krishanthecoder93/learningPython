@@ -1,0 +1,15 @@
+from tkinter import *
+def selected ():
+    label.config(text= "Choice of Fuel is : " + fuel.get())
+root= Tk()
+fuel= StringVar(value="Electric")
+radio_button1 = Radiobutton(root,text= "Petrol", value="Petrol",variable=fuel,command=selected)
+radio_button2 = Radiobutton(root,text= "Diesel", value="Diesel",variable=fuel,command=selected)
+radio_button3 = Radiobutton(root,text= "Electric", value="Electric",variable=fuel,command=selected)
+radio_button1.pack()
+radio_button2.pack()
+radio_button3.pack()
+label= Label(root)
+label.pack()
+root.geometry('300x400')
+root.mainloop()
