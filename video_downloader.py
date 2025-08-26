@@ -1,8 +1,7 @@
 from tkinter import *
-from tkinter import filedialog, messagebox
+from tkinter import filedialog
 #from pytube import YouTube
 from pytubefix import YouTube
-from pytubefix.cli import on_progress
 from moviepy.editor import *
 import shutil
 
@@ -18,9 +17,10 @@ def download():
 
     #Code for mp3
     audio_file = video_clip.audio
-    audio_file.write_audiofile('audio.mp3')
+    audio_filename = audio_entry.get()
+    audio_file.write_audiofile(audio_filename)
     audio_file.close()
-    shutil.move('audio.mp3', file_path)
+    shutil.move(audio_filename, file_path)
 
 
     video_clip.close()
@@ -49,13 +49,17 @@ url_label = Label(root,text=" Enter Video URL")
 url_entry = Entry(root)
 canvas.create_window(200,80,window = url_label)
 canvas.create_window(200,120,window = url_entry)
+audio_label = Label(root,text=" Enter audio file name")
+canvas.create_window(200,200,window = audio_label)
+audio_entry = Entry(root) 
+canvas.create_window(200,220,window = audio_entry)
 
 
 #path to download video
 path_label= Label(root,text= "Select path to download")
 path_button = Button(root,text='Select',command=get_path)
-canvas.create_window(200,150,window = path_label)
-canvas.create_window(200,190,window = path_button)
+canvas.create_window(200,140,window = path_label)
+canvas.create_window(200,170,window = path_button)
 
 #download button
 download_button =Button(root,text='Download',command=download)
