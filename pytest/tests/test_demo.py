@@ -7,7 +7,7 @@ import sys
 def test_add():
     assert add(10,20) ==30
 
-@pytest.mark.skipif(sys.version_info<(3,10), reason="Needs Python 3,10+")
+@pytest.mark.skipif(sys.version_info<(3,10), reason="Needs Python 3.10+")
 def test_sub():
     assert sub(50,20) ==30
 
